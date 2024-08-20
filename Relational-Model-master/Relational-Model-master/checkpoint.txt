@@ -1,0 +1,11 @@
+RELATIONAl MODEL     
+
+Hotel (hotel_Id, hotel_name )
+
+Type (type_Id, #hotel_Id, type_Name)
+
+Room (Room_Id, #hotel_Id, floor)
+
+Category (category_Id, #Room_Id, category_Name, Price, Bed_Number)
+
+Employee (Employee_Id, #hotel_Id, employee_Name, Employee Speciality)

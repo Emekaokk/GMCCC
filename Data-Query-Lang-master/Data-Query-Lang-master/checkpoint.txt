@@ -1,0 +1,44 @@
+SELECT * FROM Customer;
+
+
+SELECT product_name, category
+FROM Product
+WHERE price BETWEEN 5000 AND 10000;
+
+
+SELECT * FROM Product
+ORDER BY price DESC;
+
+
+SELECT product_id, COUNT(*) AS number_of_orders
+FROM Orders
+GROUP BY product_id;
+
+
+SELECT customer_id
+FROM Orders
+GROUP BY customer_id
+HAVING COUNT(*) > 2;
+
+
+SELECT EXTRACT(MONTH FROM order_date) AS month, COUNT(*) AS number_of_orders
+FROM Orders
+WHERE EXTRACT(YEAR FROM order_date) = 2020
+GROUP BY EXTRACT(MONTH FROM order_date);
+
+
+SELECT p.product_name, c.customer_name, o.order_date
+FROM Orders o
+JOIN Product p ON o.product_id = p.product_id
+JOIN Customer c ON o.customer_id = c.customer_id;
+
+
+SELECT *
+FROM Orders
+WHERE order_date >= ADD_MONTHS(SYSDATE, -3) AND order_date < ADD_MONTHS(SYSDATE, -2);
+
+
+SELECT c.customer_id
+FROM Customer c
+LEFT JOIN Orders o ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;
